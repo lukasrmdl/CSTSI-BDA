@@ -1,5 +1,5 @@
 import  * as fb from "firebase/database";// sera preciso usar fb antes de cada funcao
-import db from "../database/database.js";
+import db from "../../database/database.js";
 
 db()
 .then(db=>{//db contem a referencia ao banco

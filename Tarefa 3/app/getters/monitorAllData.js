@@ -1,8 +1,19 @@
-import  * as fb from "firebase/database";// sera preciso usar fb antes de cada funcao
-import db from "../../database/database.js";
+import { ref } from "firebase/database";
+import database from "../../database/database.js";
+import { get } from "firebase/database";
+import { child } from "firebase/database";
 
-db()
-.then(db=>{//db contem a referencia ao banco
-    console.log(db)//mostra informacoes da conexao(pode excluir)
-    //implemente aqui
-}).catch(err=>console.log(err))
+    const dbRef = ref(database);
+
+    get(child(dbRef, `clientes/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot.val());
+        } 
+        else {
+            console.log("Dados não encontrados!");
+        }
+        process.exit();
+    }) .catch((error) => {
+        console.error(error);
+        process.exit();
+    });

@@ -1,4 +1,4 @@
-import db from "../database/database.js";
+import db from "../../database/database.js";
 import {ref, set} from "firebase/database";
 
 const newClientId = '-NQ8oqCGzAI9ToITl3An';

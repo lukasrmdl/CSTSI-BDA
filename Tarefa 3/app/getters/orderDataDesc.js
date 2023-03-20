@@ -1,12 +1,11 @@
-import { ref } from "firebase/database";
+import { ref, query, orderByKey, onValue } from "firebase/database";
 import database from "../../database/database.js";
-import { get } from "firebase/database";
-import { child } from "firebase/database";
+const dbRef = ref(database, "produtos");
 
-db()
-  .then((db) => {
-    //db contem a referencia ao banco
-    console.log(db); //mostra informacoes da conexao(pode excluir)
-    //implemente aqui
-  })
-  .catch((err) => console.log(err));
+const consulta = query(dbRef, orderByKey());
+onValue(consulta, (dados) => {
+  let arrayDados = Object.entries(dados.val());
+  let invert = Object.fromEntries(arrayDados.reverse());
+  console.log(invert);
+  process.exit(0);
+});

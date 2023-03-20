@@ -1,10 +1,12 @@
-import * as fb from "firebase/database"; // sera preciso usar fb antes de cada funcao
-import db from "../../database/database.js";
+import database from "../../database/database.js";
+import { ref, onChildChanged } from "firebase/database";
 
-db()
-  .then((db) => {
-    //db contem a referencia ao banco
-    console.log(db); //mostra informacoes da conexao(pode excluir)
-    //implemente aqui
-  })
-  .catch((err) => console.log(err));
+const dbRef = ref(database, "produtos");
+
+onChildChanged(dbRef, (snapshot) => {
+  console.log(snapshot.val());
+  if (snapshot.key == "-MwSzyJMlNDToTGtPuhc") {
+    off(dbRef, "child_changed");
+    console.log("callback removido!");
+  }
+});

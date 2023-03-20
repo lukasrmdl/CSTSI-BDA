@@ -1,10 +1,9 @@
-import * as fb from "firebase/database"; // sera preciso usar fb antes de cada funcao
-import db from "../../database/database.js";
+import { ref, query, orderByPriority, onChildAdded } from "firebase/database";
+import database from "../../database/database.js";
+const dbRef = ref(database);
 
-db()
-  .then((db) => {
-    //db contem a referencia ao banco
-    console.log(db); //mostra informacoes da conexao(pode excluir)
-    //implemente aqui
-  })
-  .catch((err) => console.log(err));
+const consulta = query(dbRef, orderByPriority(database))
+onChildAdded(consulta,dados=>{
+  console.log(dados.val())
+  process.exit(0);
+})

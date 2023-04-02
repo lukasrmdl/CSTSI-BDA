@@ -3,7 +3,15 @@ import {
     query,
     orderByChild,
     onChildAdded,
-    startAt
+    off,
+    endAt,
+    endBefore,
+    equalTo,
+    startAt,
+    startAfter,
+    onValue,
+    limitToFirst,
+    limitToLast
 } from "firebase/database"
 
 function getOrderByChild(order,db,callback){
@@ -15,25 +23,31 @@ function getOrderByChild(order,db,callback){
 
 function getFilterByChild(filter,value, db,callback){
     console.log(filter)
-    const refDB = ref(db,'produtos/');
-    const consulta = query(refDB,orderByChild(filter), startAt(value))
-    onChildAdded(consulta,callback)
+    const refDb = ref(db, `produtos/`)
+    const consulta = query(refDb, orderByChild(filter), startAt(value))
+    onChildAdded(consulta, callback)
 }
 
-function getMostExpensive(db,setValue,list,callback){
-    const refDB = ref(db,'produtos/');
-    const consulta = query(refDB, orderByChild('preco'));
-    onChildAdded(consulta,callback)
+function getMostExpensive(db,setValue,list){
+    const refDb = ref(db, `produtos/`)
+    const consulta = query(refDb, orderByChild(`preco`))
+    onChildAdded(consulta, data => {
+        list.unshift(data.val())
+    })
+
+    setValue([...list])
 }
 
 function getMostCheap(db,callback){
-    const refDB = ref(db,'produtos/');
-    const consulta = query(refDB, orderByChild('preco').limitToFirst(10));
-    onChildAdded(consulta,callback)
+    const refDb = ref(db, `produtos/`)
+    const consulta = query(refDb, orderByChild(`preco`))
+    onChildAdded(consulta, callback)
 }
 
-function getPriceRange(value, db,callback){
-    //implemente aqui
+function getPriceRange(value, db,callback){//0--->limit
+    const refDb = ref(db, `produtos/`)
+    const consulta = query(refDb, orderByChild(`preco`), endAt(parseInt(value)))
+    onChildAdded(consulta, callback)
 }
 
 export {getOrderByChild, getFilterByChild, getMostExpensive, getMostCheap, getPriceRange}

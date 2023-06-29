@@ -1,5 +1,5 @@
 import database from "../../database/database.js";
-import { ref, onChildChanged } from "firebase/database";
+import { ref, onChildChanged,off } from "firebase/database";
 
 const dbRef = ref(database, "produtos");
 

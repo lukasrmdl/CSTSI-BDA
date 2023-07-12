@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {
-    getOrderByChild,
-    getFilterByChild,
-    getMostExpensive,
-    getMostCheap,
-    getPriceRange
-} from '../Firebase/ProdutosDao';
 import { TableProds } from './tableProds';
 import 'materialize-css';
 import { Button, Select, Row, Col, ProgressBar, TextInput } from 'react-materialize';

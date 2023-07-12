@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "bda-mongo",
+  "version": "1.0.0",
+  "description": "diretorio utilizado para as atividades da cadeira de banco de dados avançados com mongoDB",
+  "main": "playground-2.mongodb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lukas Raphael",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongodb": "^5.7.0"
+  }
+}

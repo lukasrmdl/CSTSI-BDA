@@ -1,6 +1,6 @@
 import { ref, get } from "firebase/database";
 import database from "../../database/database.js";
-const dbRef = ref(database);
+const dbRef = ref(database,'produtos'); //especifica o nó a ser lido
 
 get(dbRef)
   .then((snapshot) => {

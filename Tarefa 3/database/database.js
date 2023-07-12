@@ -3,9 +3,9 @@ import { getDatabase } from "firebase/database";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDyrx81fWfABfEbfLreS2FcAtC0XHeX-U8",
+  apiKey:"AIzaSyDxBxDu2kPG2KPJE-NNbsHsA4_WStSwpn4",
   authDomain: "cstsi-dba-5sem-90926.firebaseapp.com",
-  databaseURL: "https://aula-bda-a1c54-default-rtdb.firebaseio.com/",
+  databaseURL: "https://cstsi-dba-5sem-90926-default-rtdb.firebaseio.com",
   projectId: "cstsi-dba-5sem-90926",
   storageBucket: "cstsi-dba-5sem-90926.appspot.com",
   messagingSenderId: "249137749337",
